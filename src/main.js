@@ -12,14 +12,12 @@ import 'element-ui/lib/theme-chalk/index.css'
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 
-
-
 const whiteList = ['/login','/404', '/'] // 不重定向白名单
 router.beforeEach((to, from, next) => {
     let user = getuser()
     console.log('Token',user)
-    if (user) {
-      if (!user) {
+    if (user.Token) {
+      if (!user.Token) {
         if (to.path === '/login') {
           router.push({ name: "login", params: { msg: "登录失效" } })
         } else {
@@ -36,7 +34,7 @@ router.beforeEach((to, from, next) => {
           next()
         }
       }
-  
+
     } else {
       if (whiteList.indexOf(to.path) !== -1) {
         next()

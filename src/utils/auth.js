@@ -15,7 +15,12 @@ export function getuser() {
       UserID: window.localStorage.getItem(USER_DATA_KEY.UserID)
     }
   }else{
-    return null
+    return {
+      Username:null,
+      Token:null,
+      Userhead:null,
+      UserID:null
+    }
   }
 
 }

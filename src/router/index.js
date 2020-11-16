@@ -21,76 +21,124 @@ const routes = [
     children: [
       {
         path: '',
-        component: () => import('@/views/componentsdata/list.vue'),
-        meta: {title:'首页'}
+        name: 'index',
+        component: () => import('@/views/index/home.vue'),
+        meta: {title:'汇总', icon: 'el-icon-s-marketing'}
       }
     ]
   },
   {
-    path: '/components',
-    component: Layout,
-    children: [
-      {
-        path: '',
-        component: () => import('@/views/componentsdata/list.vue'),
-        meta: {title:'组件'}
-      }
-    ]
-  },
-  {
-    path: '/cache',
-    component: Layout,
-    hidden: true,
-    children: [
-      {
-        path: '',
-        component: () => import('@/views/cache/list.vue'),
-        meta: {title:'内容缓存'}
-      }
-    ]
-  },
-  {
-    path: '/article',
+    path: '/subject',
     component: Layout,
     meta: {
-      title: '文章',
-      icon: 'el-icon-star-on'
+      title: '使用主体',
+      icon: 'el-icon-s-grid'
     },
     children: [
       {
         path: '',
-        name: 'all',
-        component: () => import('@/views/article/list.vue'),
-        meta: {title:'所有'}
+        name: 'subjectmain',
+        component: () => import('@/views/index/home.vue'),
+        meta: {title:'全部', icon:'el-icon-coordinate'}
       },
       {
-        path: 'edit',
-        name: 'edit',
-        component: () => import('@/views/article/edit.vue'),
-        meta: {title:'新增和编辑'}
+        path: 'new',
+        name: 'subjectnew',
+        component: () => import('@/views/index/home.vue'),
+        meta: {title:'新建', icon:'el-icon-circle-plus'}
       }
     ]
   },
   {
-    path: '/photograph',
-    name: 'photograph',
+    path: '/gateway',
     component: Layout,
-    meta: {title:'相册'},
     children: [
       {
-        path: 'list',
-        name: 'photographall',
-        component: () => import('@/views/photograph/list.vue'),
-        meta: {title:'全部'}
-      },
+        path: '',
+        name: 'gateway',
+        component: () => import('@/views/index/home.vue'),
+        meta: {title:'网关', icon: 'el-icon-s-help'},
+      }
+    ]
+  },{
+    path: '/equipment',
+    component: Layout,
+    children: [
       {
-        path: 'add',
-        name: 'photographedit',
-        component: () => import('@/views/photograph/add.vue'),
-        meta: {title:'上传'}
+        path: '',
+        name: 'equipment',
+        component: () => import('@/views/index/home.vue'),
+        meta: {title:'设备', icon: 'el-icon-share'}
       }
     ]
   },
+  {
+    path: '/account',
+    component: Layout,
+    meta: {
+      title: '账户',
+      icon: 'el-icon-s-custom'
+    },
+    children: [
+      {
+        path: '',
+        name: 'accountMy',
+        component: () => import('@/views/index/home.vue'),
+        meta: {title:'账户设置', icon: 'el-icon-user-solid'}
+      },
+      {
+        path: 'edit',
+        name: 'accountKey',
+        component: () => import('@/views/index/home.vue'),
+        meta: {title:'SecretKey', icon: 'el-icon-upload'}
+      }
+    ]
+  },
+  // {
+  //   path: '/components',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: '',
+  //       component: () => import('@/views/componentsdata/list.vue'),
+  //       meta: {title:'组件'}
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/cache',
+  //   component: Layout,
+  //   // hidden: true,
+  //   children: [
+  //     {
+  //       path: '',
+  //       component: () => import('@/views/cache/list.vue'),
+  //       meta: {title:'内容缓存'}
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/article',
+  //   component: Layout,
+  //   meta: {
+  //     title: '文章',
+  //     icon: 'el-icon-star-on'
+  //   },
+  //   children: [
+  //     {
+  //       path: '',
+  //       name: 'all',
+  //       component: () => import('@/views/article/list.vue'),
+  //       meta: {title:'所有'}
+  //     },
+  //     {
+  //       path: 'edit',
+  //       name: 'edit',
+  //       component: () => import('@/views/article/edit.vue'),
+  //       meta: {title:'新增和编辑'}
+  //     }
+  //   ]
+  // },
   {
     path: '/login',
     name: 'login',

@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function authAdminLogin(data) {
     return request({
-        url: '/login/admin/signin',
+        url: '/auth/admin/signin',
         method: 'post',
         data: data
     })

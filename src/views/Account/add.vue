@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <div class="func-content">
+    <!-- <div class="func-content">
       <div class="func-name">账户类型</div>
       <div class="func-content">
     <el-radio-group v-model="jurisdiction">
@@ -33,7 +33,7 @@
       <el-radio-button label="2">一般用户</el-radio-button>
     </el-radio-group>
     </div>
-    </div>
+    </div> -->
 
     <div class="func-content">
       <div class="func-name">备注</div>
@@ -63,7 +63,7 @@ export default {
       email: null,
       username: null,
       password: null,
-      jurisdiction: 2,
+      jurisdiction: 1,
       remarks: null,
     };
   },

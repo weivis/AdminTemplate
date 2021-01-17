@@ -71,7 +71,7 @@
       <Pagination
         @pagination="getList()"
         :page.sync="currentPage"
-        :pageCount.sync="totalPage"
+        :pageCount.sync="pageCount"
         :total.sync="total"
         v-if="total > 0"
       />
@@ -90,7 +90,7 @@ export default {
       tableData: [],
       currentPage: 1, // 当前页码
       total: 0, // 总条目
-      totalPage: 0, // 总页数
+      pageCount: 0, // 总页数
       doc: {
         role: {
           1: "管理员",
@@ -121,7 +121,7 @@ export default {
             });
             this.total = res.data.total;
             this.currentPage = res.data.currentPage;
-            this.totalPage = res.data.totalPages;
+            this.pageCount = res.data.pageCount;
             this.tableData = res.data.result;
           } else {
             this.$message({

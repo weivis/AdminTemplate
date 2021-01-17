@@ -4,17 +4,18 @@
       <div class="w">
         <div class="l">
           <div class="logobox">
-          <div class="logo">
-            <img src="@/assets/image/logo2.png"/>
+            <div class="logo">
+              <img src="@/assets/image/logo2.png" />
+            </div>
           </div>
-          </div>
-          <div class="title">数字农业IOT</div>
-          </div>
+          <div class="title">AdminTemplate</div>
+        </div>
+
         <div class="r">
-          <span>{{userdata.Username}}</span>
           <el-dropdown class="loginbar">
             <span class="el-dropdown-link">
-              更多<i class="el-icon-arrow-down el-icon--right"></i>
+              <span>欢迎你, 管理员 {{ userdata.Username }} </span>
+              <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item @click.native="logoutbutton()"
@@ -23,6 +24,13 @@
             </el-dropdown-menu>
           </el-dropdown>
         </div>
+
+        <div class="r">
+          <div class="userhead">
+            <img :src="userdata.Userhead" />
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -36,7 +44,7 @@ export default {
   components: {},
   data() {
     return {
-      userdata: null
+      userdata: null,
     };
   },
   watch: {},
@@ -46,8 +54,8 @@ export default {
       router.push({ name: "login" });
     },
   },
-  created(){
-    this.userdata = getuser()
-  }
+  created() {
+    this.userdata = getuser();
+  },
 };
 </script>

@@ -8,67 +8,37 @@ import Layout from '../layout/Layout'
 
 const routes = [
   { path: '/404', component: () => import('@/views/404'), hidden: true },
-  // {
-  //   path: '/',
-  //   component: Layout,
-  //   redirect: '/components',
-  //   hidden: true,
-  //   name: 'home',
-  // },
   {
     path: '/',
+    component: Layout,
+    meta: {
+      title: 'AdminTemplate',
+      icon: 'el-icon-s-marketing'
+    },
+    children: [
+      {
+        path: '',
+        name: 'principalMain',
+        component: () => import('@/views/Index'),
+        meta: { title: '全部', icon: 'el-icon-coordinate', requireAuth: true }
+      },
+      {
+        path: 'new',
+        name: 'principalNew',
+        component: () => import('@/views/Index'),
+        meta: { title: '新建', icon: 'el-icon-circle-plus', requireAuth: true }
+      }
+    ]
+  },
+  {
+    path: '/demo',
     component: Layout,
     children: [
       {
         path: '',
         name: 'index',
-        component: () => import('@/views/index/home.vue'),
-        meta: {title:'汇总', icon: 'el-icon-s-marketing'}
-      }
-    ]
-  },
-  {
-    path: '/subject',
-    component: Layout,
-    meta: {
-      title: '使用主体',
-      icon: 'el-icon-s-grid'
-    },
-    children: [
-      {
-        path: '',
-        name: 'subjectmain',
-        component: () => import('@/views/index/home.vue'),
-        meta: {title:'全部', icon:'el-icon-coordinate'}
-      },
-      {
-        path: 'new',
-        name: 'subjectnew',
-        component: () => import('@/views/index/home.vue'),
-        meta: {title:'新建', icon:'el-icon-circle-plus'}
-      }
-    ]
-  },
-  {
-    path: '/gateway',
-    component: Layout,
-    children: [
-      {
-        path: '',
-        name: 'gateway',
-        component: () => import('@/views/index/home.vue'),
-        meta: {title:'网关', icon: 'el-icon-s-help'},
-      }
-    ]
-  },{
-    path: '/equipment',
-    component: Layout,
-    children: [
-      {
-        path: '',
-        name: 'equipment',
-        component: () => import('@/views/index/home.vue'),
-        meta: {title:'设备', icon: 'el-icon-share'}
+        component: () => import('@/views/Index'),
+        meta: { title: 'AdminTemplate-2', icon: 'el-icon-s-marketing', requireAuth: true }
       }
     ]
   },
@@ -76,81 +46,54 @@ const routes = [
     path: '/account',
     component: Layout,
     meta: {
-      title: '账户',
+      title: '管理员账户管理',
       icon: 'el-icon-s-custom'
     },
+    adminpage: true,
     children: [
       {
         path: '',
-        name: 'accountMy',
-        component: () => import('@/views/index/home.vue'),
-        meta: {title:'账户设置', icon: 'el-icon-user-solid'}
+        name: 'accountIndex',
+        component: () => import('@/views/Account/list.vue'),
+        meta: { title: '全部管理员账户', icon: 'el-icon-s-data', requireAuth: true }
       },
       {
-        path: 'edit',
-        name: 'accountKey',
-        component: () => import('@/views/index/home.vue'),
-        meta: {title:'SecretKey', icon: 'el-icon-upload'}
+        path: 'add',
+        name: 'accountAdd',
+        component: () => import('@/views/Account/add.vue'),
+        meta: { title: '新增管理员账户', icon: 'el-icon-circle-plus', requireAuth: true }
       }
     ]
   },
-  // {
-  //   path: '/components',
-  //   component: Layout,
-  //   children: [
-  //     {
-  //       path: '',
-  //       component: () => import('@/views/componentsdata/list.vue'),
-  //       meta: {title:'组件'}
-  //     }
-  //   ]
-  // },
-  // {
-  //   path: '/cache',
-  //   component: Layout,
-  //   // hidden: true,
-  //   children: [
-  //     {
-  //       path: '',
-  //       component: () => import('@/views/cache/list.vue'),
-  //       meta: {title:'内容缓存'}
-  //     }
-  //   ]
-  // },
-  // {
-  //   path: '/article',
-  //   component: Layout,
-  //   meta: {
-  //     title: '文章',
-  //     icon: 'el-icon-star-on'
-  //   },
-  //   children: [
-  //     {
-  //       path: '',
-  //       name: 'all',
-  //       component: () => import('@/views/article/list.vue'),
-  //       meta: {title:'所有'}
-  //     },
-  //     {
-  //       path: 'edit',
-  //       name: 'edit',
-  //       component: () => import('@/views/article/edit.vue'),
-  //       meta: {title:'新增和编辑'}
-  //     }
-  //   ]
-  // },
+  {
+    path: '/myset',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'mysetIndex',
+        component: () => import('@/views/Setmyacc'),
+        meta: { title: '个人设置', icon: 'el-icon-thumb', requireAuth: true }
+      }
+    ]
+  },
   {
     path: '/login',
     name: 'login',
     hidden: true,
-    component: () => import('@/views/login/')
+    component: () => import('@/views/Login/'),
+    meta: { title: '登录你的账户', icon: 'el-icon-thumb', requireAuth: false }
   }
 ]
 
 const router = new VueRouter({
   mode: 'history',
-  // base: 'admin',
   routes
 })
 
 export default router
+
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}

@@ -41,8 +41,48 @@
         color: #fff;
         font-weight: lighter;
     }
-    .loginbar{
+    .userhead{
+        margin: 10px;
+        border-radius: 50px;
+        width: 41px;
+        height: 41px;
+        overflow: hidden;
+        // margin-right: 25px;
+        img{
+            width: 100%;
+        }
+    }
+    .username{
         line-height: 61px;
         color: #fff;
+        float: right;
+        margin-right: 25px;
+        font-size: 14px;
+    }
+    .loginbar{
+        float: right;
+        line-height: 61px;
+        color: #fff;
+    }
+}
+
+
+.layout-style{
+    .layout-page-title{
+        font-size: 24px;
+    }
+    .layout-funcbox{
+        margin-top: 30px;
+        padding-bottom: 30px;
+        display: flow-root;
+        .func-name{
+            width: 100%;
+            font-size: 18px;;
+        }
+        .func-content{
+            width: 100%;
+            margin-top: 15px;
+            display: flow-root;
+        }
     }
 }

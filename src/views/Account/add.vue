@@ -25,15 +25,15 @@
       </div>
     </div>
 
-    <!-- <div class="func-content">
+    <div class="func-content">
       <div class="func-name">账户类型</div>
       <div class="func-content">
     <el-radio-group v-model="jurisdiction">
-      <el-radio-button label="1">管理员</el-radio-button>
-      <el-radio-button label="2">一般用户</el-radio-button>
+      <el-radio-button label="1">高级管理员</el-radio-button>
+      <el-radio-button label="2">一般管理员</el-radio-button>
     </el-radio-group>
     </div>
-    </div> -->
+    </div>
 
     <div class="func-content">
       <div class="func-name">备注</div>

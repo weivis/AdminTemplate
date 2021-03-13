@@ -43,13 +43,25 @@ const routes = [
     ]
   },
   {
+    path: '/user',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'usermanage',
+        component: () => import('@/views/User'),
+        meta: { title: '用户管理', icon: 'el-icon-user-solid', requireAuth: true }
+      }
+    ]
+  },
+  {
     path: '/account',
     component: Layout,
     meta: {
       title: '管理员账户管理',
       icon: 'el-icon-s-custom'
     },
-    adminpage: true,
+    adminpage: true, 
     children: [
       {
         path: '',

@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function UserInfo(data) {
     return request({
-        url: '/account/info',
+        url: '/admin/account/get',
         method: 'post',
         data: data
     })
@@ -10,7 +10,7 @@ export function UserInfo(data) {
 
 export function Changeinfo(data) {
     return request({
-        url: '/account/change/userinfo',
+        url: '/admin/account/put',
         method: 'post',
         data: data
     })
@@ -18,7 +18,7 @@ export function Changeinfo(data) {
 
 export function Allaccount(data) {
     return request({
-        url: '/account/allaccount',
+        url: '/admin/account',
         method: 'post',
         data: data
     })
@@ -26,7 +26,7 @@ export function Allaccount(data) {
 
 export function Createaccount(data) {
     return request({
-        url: '/account/create',
+        url: '/admin/account/post',
         method: 'post',
         data: data
     })
@@ -34,7 +34,7 @@ export function Createaccount(data) {
 
 export function Manage(data) {
     return request({
-        url: '/account/manage',
+        url: '/admin/account/put',
         method: 'post',
         data: data
     })

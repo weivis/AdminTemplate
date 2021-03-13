@@ -1,8 +1,8 @@
 import request from '@/utils/request'
 
-export function authAdminLogin(data) {
+export function userget(data) {
     return request({
-        url: '/admin/signin',
+        url: '/admin/user',
         method: 'post',
         data: data
     })

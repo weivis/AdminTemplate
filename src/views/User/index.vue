@@ -1,6 +1,6 @@
 <template>
   <div class="layout-style">
-    <div class="layout-page-title">管理员账户管理</div>
+    <div class="layout-page-title">用户管理</div>
     <div class="layout-funcbox">
       <el-table :data="tableData" style="width: 100%">
         <el-table-column prop="id" label="ID" width="50"> </el-table-column>
@@ -14,27 +14,28 @@
           </template>
         </el-table-column>
 
-        <el-table-column prop="username" label="账户名" width="180">
+        <el-table-column prop="introduce" label="用户个人介绍">
         </el-table-column>
 
-        <el-table-column prop="account" label="登录邮箱" width="250">
+        <el-table-column prop="phone" label="手机号">
         </el-table-column>
 
-        <el-table-column prop="jurisdiction" label="角色" width="100">
+        <el-table-column prop="email" label="邮箱">
+        </el-table-column>
+
+        <!-- <el-table-column prop="jurisdiction" label="角色" width="100">
           <template slot-scope="scope">
             {{ doc.role[scope.row.jurisdiction] }}
           </template>
-        </el-table-column>
+        </el-table-column> -->
 
-        <el-table-column prop="jurisdiction" label="账户状态" width="100">
+        <el-table-column prop="jurisdiction" label="账户状态">
           <template slot-scope="scope">
             {{ doc.status[scope.row.status] }}
           </template>
         </el-table-column>
 
-        <el-table-column prop="remarks" label="备注"> </el-table-column>
-
-        <el-table-column label="更多" fixed="right" width="125">
+        <!-- <el-table-column label="更多" fixed="right" width="125">
           <template slot-scope="scope">
             <el-dropdown>
               <el-button type="primary">
@@ -63,7 +64,8 @@
               </el-dropdown-menu>
             </el-dropdown>
           </template>
-        </el-table-column>
+        </el-table-column> -->
+
       </el-table>
     </div>
 
@@ -81,10 +83,10 @@
 
 <script>
 // @ is an alias to /src
-import { Allaccount, Manage } from "@/api/account";
+import { userget } from "@/api/user";
 import Pagination from "@/components/Pagination.vue";
 export default {
-  name: "Home",
+  name: "User",
   data() {
     return {
       tableData: [],
@@ -92,10 +94,6 @@ export default {
       total: 0, // 总条目
       pageCount: 0, // 总页数
       doc: {
-        role: {
-          1: "高级管理员",
-          2: "一般管理员",
-        },
         status: {
           0: "正常",
           1: "异常",
@@ -109,7 +107,7 @@ export default {
   methods: {
     getList() {
       this.$http(
-        Allaccount({
+        userget({
           querypage: this.currentPage,
         }),
         (res) => {
@@ -132,61 +130,7 @@ export default {
           }
         }
       );
-    },
-    change(data) {
-      this.$http(Manage(data), (res) => {
-        console.log(res);
-        if (res.code == 200) {
-          this.getList();
-        } else {
-          this.$message({
-            message: res.msg,
-            type: "error",
-            duration: 5 * 1000,
-          });
-        }
-      });
-    },
-    changeaccount(type, id) {
-      let doc = {
-        5: "修改账户",
-        4: "设置备注",
-        3: "修改密码",
-      };
-      this.$prompt(doc[type], "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-      })
-        .then(({ value }) => {
-          if (type == 3) {
-            this.change({
-              passwort: value,
-              set: type,
-              id: id,
-            });
-          }
-          if (type == 4) {
-            this.change({
-              remarks: value,
-              set: type,
-              id: id,
-            });
-          }
-          if (type == 5) {
-            this.change({
-              email: value,
-              set: type,
-              id: id,
-            });
-          }
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "取消更改",
-          });
-        });
-    },
+    }
   },
   created() {
     this.getList();

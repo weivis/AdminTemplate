@@ -42,12 +42,13 @@ export function uploadusername(Username){
 
 export function signin(token, Username, Userhead, UserID, UserJurisdiction) {
   console.log("[auth.js]成功记录用户信息")
-  console.log(UserJurisdiction)
   window.localStorage.setItem(USER_DATA_KEY.Token, token)
   window.localStorage.setItem(USER_DATA_KEY.Username, Username)
   window.localStorage.setItem(USER_DATA_KEY.Userhead, Userhead)
   window.localStorage.setItem(USER_DATA_KEY.UserID, UserID)
-  window.localStorage.setItem(USER_DATA_KEY.UserJurisdiction, 1)
+
+  // UserJurisdiction 管理员身份 1 高级管理员 2 一般管理员
+  window.localStorage.setItem(USER_DATA_KEY.UserJurisdiction, UserJurisdiction)
   return token
 }
 

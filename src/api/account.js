@@ -3,7 +3,7 @@ import request from '@/utils/request'
 export function MyAdminAccountGet(data) {
     /* 获取当前登录访问的管理员信息 */
     return request({
-        url: '/admin/account/get',
+        url: '/admin/my/account/get',
         method: 'post',
         data: data
     })

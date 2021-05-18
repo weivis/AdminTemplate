@@ -1,8 +1,8 @@
 import request from '@/utils/request'
 
-export function userget(data) {
+export function AdminUserList(data) {
     return request({
-        url: '/admin/user',
+        url: '/user/admin/list',
         method: 'post',
         data: data
     })

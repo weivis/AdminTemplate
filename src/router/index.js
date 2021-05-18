@@ -49,7 +49,7 @@ const routes = [
       {
         path: '',
         name: 'usermanage',
-        component: () => import('@/views/User'),
+        component: () => import('@/views/UserAccount/list'),
         meta: { title: '用户管理', icon: 'el-icon-user-solid', requireAuth: true }
       }
     ]
@@ -66,25 +66,25 @@ const routes = [
       {
         path: '',
         name: 'accountIndex',
-        component: () => import('@/views/Account/list.vue'),
+        component: () => import('@/views/AdminAccount/list.vue'),
         meta: { title: '全部管理员账户', icon: 'el-icon-s-data', requireAuth: true }
       },
       {
         path: 'add',
         name: 'accountAdd',
-        component: () => import('@/views/Account/add.vue'),
+        component: () => import('@/views/AdminAccount/add.vue'),
         meta: { title: '新增管理员账户', icon: 'el-icon-circle-plus', requireAuth: true }
       }
     ]
   },
   {
-    path: '/myset',
+    path: '/edit/my/account',
     component: Layout,
     children: [
       {
         path: '',
-        name: 'mysetIndex',
-        component: () => import('@/views/Setmyacc'),
+        name: 'EditMyAccount',
+        component: () => import('@/views/EditMyAccount'),
         meta: { title: '个人设置', icon: 'el-icon-thumb', requireAuth: true }
       }
     ]

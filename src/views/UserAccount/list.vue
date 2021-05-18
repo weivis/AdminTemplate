@@ -83,7 +83,7 @@
 
 <script>
 // @ is an alias to /src
-import { userget } from "@/api/user";
+import { AdminUserList } from "@/api/user";
 import Pagination from "@/components/Pagination.vue";
 export default {
   name: "User",
@@ -107,7 +107,7 @@ export default {
   methods: {
     getList() {
       this.$http(
-        userget({
+        AdminUserList({
           querypage: this.currentPage,
         }),
         (res) => {

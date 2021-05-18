@@ -1,16 +1,21 @@
 <template>
     <el-row class="input">
+      <div class="img" v-if="lodpath">
+        <img v-if="lodpath" :src="lodpath" class="img" style="float:left" />
+      </div>
+      <div class="upbutton">
         <el-upload
-            
+        class="uploadbutt"
             :show-file-list="false"
             drag
             action
             :http-request="upLoad"
             multiple
         >
-        <img v-if="lodpath" :src="lodpath" class="img" />
-        <i class="el-icon-upload"></i>
-        <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+        <span>点击此处上传文件</span>
+        <!-- <img v-if="lodpath" :src="lodpath" class="img" /> -->
+        <!-- <i class="el-icon-upload"></i> -->
+        <!-- <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div> -->
       </el-upload>
       <div v-if="debug">
           {{uploadkey}}
@@ -18,13 +23,14 @@
           {{lodpath}}
           {{ospath}}
       </div>
+      </div>
     </el-row>
 </template>
 
 <script>
 import { upload } from "@/api/common";
 export default {
-  name: 'UploadHead',
+  name: 'UploadCover',
   props: {
     uploadkey: {
       type: String,
@@ -75,9 +81,28 @@ export default {
   }
 }
 </script>
-
-<style scoped>
+<style>
+  .el-upload-dragger{
+    height: 50px !important;
+    width: 200px !important;
+    background-color: #006eff;
+    color: #fff;
+    border: 0px;
+    line-height: 50px;
+  }
+  .el-icon-upload{
+    font-size: 36px !important;
+    line-height: 60px !important;
+    margin-top: 0 !important;
+  }
+</style>
+<style lang="scss" scoped>
 .img{
-  width: 100%;
+  width: 200px;
+  margin-bottom: 10px;
+}
+.upbutton{
+  width: 250px;
+  margin-bottom: 5px;
 }
 </style>

@@ -6,7 +6,7 @@
       <div class="func-name">修改头像</div>
 
       <div class="func-content">
-        <UploadHead
+        <UploadFile
           :uploadkey="'userhead'"
           :filename.sync="headform.filename"
           :lodpath.sync="headform.lodpath"
@@ -42,7 +42,7 @@
 
 <script>
 // @ is an alias to /src
-import UploadHead from "@/components/UploadHead.vue";
+import UploadFile from "@/components/UploadFile.vue";
 import { uploaduserhead, uploadusername } from "@/utils/auth";
 import { MyAdminAccountGet, MyAdminAccountPut } from "@/api/account";
 export default {
@@ -57,7 +57,7 @@ export default {
     };
   },
   components: {
-    UploadHead,
+    UploadFile,
   },
   methods: {
     getMyAdminAccountGet() {

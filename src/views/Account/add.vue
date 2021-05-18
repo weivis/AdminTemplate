@@ -55,7 +55,7 @@
 
 <script>
 // @ is an alias to /src
-import { Createaccount } from "@/api/account";
+import { AdminAccountPost } from "@/api/account";
 export default {
   name: "Home",
   data() {
@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     push() {
-      this.$http(Createaccount({
+      this.$http(AdminAccountPost({
         email: this.email,
         username: this.username,
         password: this.password,

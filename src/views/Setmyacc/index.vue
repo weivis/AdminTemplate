@@ -44,7 +44,7 @@
 // @ is an alias to /src
 import UploadHead from "@/components/UploadHead.vue";
 import { uploaduserhead, uploadusername } from "@/utils/auth";
-import { UserInfo, Changeinfo } from "@/api/account";
+import { MyAdminAccountGet, MyAdminAccountPut } from "@/api/account";
 export default {
   name: "Home",
   data() {
@@ -60,8 +60,8 @@ export default {
     UploadHead,
   },
   methods: {
-    getuserinfo() {
-      this.$http(UserInfo({}), (res) => {
+    getMyAdminAccountGet() {
+      this.$http(MyAdminAccountGet({}), (res) => {
         console.log(res);
         if (res.code == 200) {
           this.username = res.data.username;
@@ -77,7 +77,7 @@ export default {
     },
     Savehead() {
       this.$http(
-        Changeinfo({
+        MyAdminAccountPut({
           head: this.headform.filename,
         }),
         (res) => {
@@ -100,7 +100,7 @@ export default {
     },
     Saveusername() {
       this.$http(
-        Changeinfo({
+        MyAdminAccountPut({
           username: this.username,
         }),
         (res) => {
@@ -123,7 +123,7 @@ export default {
     },
   },
   created() {
-    this.getuserinfo();
+    this.getMyAdminAccountGet();
   },
 };
 </script>

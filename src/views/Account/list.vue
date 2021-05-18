@@ -17,7 +17,7 @@
         <el-table-column prop="username" label="账户名" width="180">
         </el-table-column>
 
-        <el-table-column prop="account" label="登录邮箱" width="250">
+        <el-table-column prop="email" label="登录邮箱" width="250">
         </el-table-column>
 
         <el-table-column prop="jurisdiction" label="角色" width="100">
@@ -81,7 +81,7 @@
 
 <script>
 // @ is an alias to /src
-import { Allaccount, Manage } from "@/api/account";
+import { AdminAccountList, OtherAdminAccountPut } from "@/api/account";
 import Pagination from "@/components/Pagination.vue";
 export default {
   name: "Home",
@@ -109,7 +109,7 @@ export default {
   methods: {
     getList() {
       this.$http(
-        Allaccount({
+        AdminAccountList({
           querypage: this.currentPage,
         }),
         (res) => {
@@ -134,7 +134,7 @@ export default {
       );
     },
     change(data) {
-      this.$http(Manage(data), (res) => {
+      this.$http(OtherAdminAccountPut(data), (res) => {
         console.log(res);
         if (res.code == 200) {
           this.getList();
